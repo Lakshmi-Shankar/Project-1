@@ -66,7 +66,8 @@ router.post("/userbyemail", async(req,res)=>{
         }
         res.status(200).json({
             Message: "User found",
-            User_Details: checkUser
+            User_Details: checkUser,
+            Username: checkUser[0].name
         })
     }
     catch(err){

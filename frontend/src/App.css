@@ -1,3 +1,8 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 /* Signup */
 
 .signupBox{
@@ -105,3 +110,37 @@ form{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: small;
 }
+
+
+/* Home */
+
+
+.profile{
+  display: flex;
+  justify-content: space-between;
+  background-color: #3AAFAA;
+  padding: 20px;
+  width: 1500px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:large;
+  position: fixed;
+}
+
+/* ..... */
+.sec,.fis,.las{
+  letter-spacing: 10px;
+}
+.fis:hover{
+  font-size: larger;
+  cursor: pointer;
+}
+.sec:hover{
+  font-size: larger;
+  cursor: pointer;
+}
+.las:hover{
+  font-size: larger;
+  cursor: pointer;
+}
+
+/* ..... */

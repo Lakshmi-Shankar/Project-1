@@ -16,7 +16,6 @@ const Login = () => {
         if(!emailRegex.test(email)){
             return setErrors({err: "Invalid email format"})
         }
-        // navigate("/home")
         try{
             const response = await fetch("http://localhost:5000/users/userbyemail",{
                 method: "POST",
@@ -27,12 +26,14 @@ const Login = () => {
             console.log(data);
 
             if (response.ok){
+                localStorage.setItem("Username", data.Username);
                 navigate("/home")
             }else{
                 setErrors({err: "User not found"})
             }
-        }catch{
+        }catch(erro){
             setErrors({err: "Server is busy"})
+            console.log(erro)
         }
     }
     return (
