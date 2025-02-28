@@ -1,5 +1,5 @@
 const express = require("express");
-const userDetails = require("../model/user")
+const userDetails = require("../model/userSignup")
 const app = express();
 const router = express.Router();
 
@@ -46,6 +46,33 @@ router.post("/signup", async(req, res)=>{
     catch{
         res.status(500).json({
             Message: "Internal Server Error"
+        })
+    }
+});
+
+router.post("/userbyemail", async(req,res)=>{
+    try{
+        const { email } = req.body;
+        if(!email){
+            return res.status(400).json({
+                Message: "Email is required"
+            })
+        }
+        const checkUser = await userDetails.find({ email });
+        if (checkUser.length === 0){
+            return res.status(404).json({
+                Message: "User not found",
+            })
+        }
+        res.status(200).json({
+            Message: "User found",
+            User_Details: checkUser
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            Message: "Internal Server Error",
+            Error: err.message
         })
     }
 })

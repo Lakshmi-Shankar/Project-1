@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../App.css";
 
 const Signup = () => {
@@ -50,13 +50,12 @@ const Signup = () => {
             });
     
             const data = await response.json();
-            console.log("Server Response:", data); // Debugging Line
+            console.log(data);
     
             if (response.ok) {
-                console.log("Signup successful:", data);
                 navigate("/home");
             } else {
-                setErrors({ general: data.message || "Signup Failed User Already Exist." });
+                setErrors({ general:"Signup Failed User Already Exist." });
             }
         } catch (error) {
             console.error("Fetch Error:", error);
@@ -106,6 +105,9 @@ const Signup = () => {
                 </label>
 
                 <button className='signupButton' type="submit">Sign Up</button>
+                <p>
+                    <Link  className='toLogin' to="/login">Already have an account?</Link>
+                </p>
                 {errors.general && <p className="servererror">{errors.general}</p>}
             </form>
         </div>
