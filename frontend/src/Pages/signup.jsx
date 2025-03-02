@@ -53,6 +53,7 @@ const Signup = () => {
             console.log(data);
     
             if (response.ok) {
+                localStorage.setItem("Username",name)
                 navigate("/home");
             } else {
                 setErrors({ general:"Signup Failed User Already Exist." });

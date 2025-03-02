@@ -30,7 +30,7 @@ const Home = () => {
     const handlePostI = async(e)=>{
         if (e.key=== "Enter"){
             e.preventDefault();
-            console.log(newPost);
+            console.log(name);
             handleAdding();
             await handlePost();
             setNewpost("");
