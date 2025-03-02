@@ -104,7 +104,7 @@ const Signup = () => {
                     Show Password
                 </label>
 
-                <button className='signupButton' type="submit">Sign Up</button>
+                <button className='signupButton' type="submit" onClick={handleSubmit}>Sign Up</button>
                 <p>
                     <Link  className='toLogin' to="/login">Already have an account?</Link>
                 </p>

@@ -1,8 +1,9 @@
 const Express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const app = Express();
 const Mongoose = require("mongoose");
-const router = require("./routes/routes")
+const userRouter = require("./routes/userRoutes");
+const postRouter = require("./routes/postRoute");
 require("dotenv").config();
 app.use(Express.json());
 app.use(cors());
@@ -18,7 +19,8 @@ Mongoose.connect(URI)
     console.log("Failed to Connect:",err)
 })
 
-app.use("/users", router);
+app.use("/users", userRouter);
+app.use("/posts", postRouter);
 
 app.listen(PORT,()=>{
     console.log(`Server is running on http://localhost:${PORT}`)
