@@ -43,7 +43,7 @@ const Signup = () => {
         if (!validateForm()) return;
     
         try {
-            const response = await fetch('http://localhost:5000/users/signup', {
+            const response = await fetch('https://project-1-backend-ur4w.onrender.com/users/signup', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password })

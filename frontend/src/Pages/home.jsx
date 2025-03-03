@@ -10,7 +10,7 @@ const Home = () => {
     const handleLikes = async (postId) => {
         console.log("Sending Like Request for Post ID:", postId); 
         try {
-            const response = await fetch(`http://localhost:5000/posts/like/${postId}`, {
+            const response = await fetch(`https://project-1-backend-ur4w.onrender.com/posts/like/${postId}`, {
                 method: "PUT",
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -33,7 +33,7 @@ const Home = () => {
             console.log("It is empty")
         }
         try{
-            const response = await fetch("http://localhost:5000/posts/posting", {
+            const response = await fetch("https://project-1-backend-ur4w.onrender.com/posts/posting", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({posts: newPost})
@@ -60,7 +60,7 @@ const Home = () => {
 
     const handlePost = async (e)=>{
         try{
-            const response = await fetch("http://localhost:5000/posts/allposts", {
+            const response = await fetch("https://project-1-backend-ur4w.onrender.com/posts/allposts", {
                 method: "GET",
                 headers: { 'Content-Type': 'application/json' }
             });

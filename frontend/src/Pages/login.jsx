@@ -17,7 +17,7 @@ const Login = () => {
             return setErrors({err: "Invalid email format"})
         }
         try{
-            const response = await fetch("http://localhost:5000/users/userbyemail",{
+            const response = await fetch("https://project-1-backend-ur4w.onrender.com/users/userbyemail",{
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
                 body: JSON.stringify({email})
