@@ -7,6 +7,27 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [newPost, setNewpost] = useState("")
 
+    const handleLikes = async (postId) => {
+        console.log("Sending Like Request for Post ID:", postId); 
+        try {
+            const response = await fetch(`http://localhost:5000/posts/like/${postId}`, {
+                method: "PUT",
+                headers: { 'Content-Type': 'application/json' }
+            });
+    
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.message || "Failed to update likes");
+            }
+    
+            setPosts(posts.map(p => p._id === postId ? { ...p, like: data.updatedLikes } : p));
+        } catch (err) {
+            console.log("Error updating likes:", err);
+        }
+    };
+    
+    
+
     const handleAdding = async (e)=>{
         if(!newPost){
             console.log("It is empty")
@@ -32,7 +53,7 @@ const Home = () => {
             e.preventDefault();
             console.log(name);
             handleAdding();
-            await handlePost();
+            handlePost();
             setNewpost("");
         }
     }
@@ -67,11 +88,13 @@ const Home = () => {
                 <textarea value={newPost} placeholder="Something's on your mind...." onKeyDown={handlePostI} onChange={(e)=>setNewpost(e.target.value)}></textarea>
             </div>
             <div className='post'>
-                {posts.map((p,i)=>(
+                {posts?.map((p,i)=>(
                     <div key={p._id}>
                         <p>{p.posts}</p>
-                        <p className='like'>{p.like}</p>
-                        <img src={Like} alt='likes'></img>
+                        <label>
+                            <img src={Like} alt='likes' className='likes'onClick={() => handleLikes(p._id)}></img>
+                            <p className='likeNumber'>{p.like}</p>
+                        </label>
                     </div>
                 ))}
             </div>
